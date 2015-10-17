@@ -105,7 +105,7 @@
                               <span>ss - <%=h listing.body %></span>
                           <%end%>
                           <%if listing.video_uplink.present?%>
-                              <span>Video Link - <%=h listing.video_uplink %></span>
+                             <span><%=h link_to listing.video_uplink, listing.video_uplink, :target => "_blank" %></span>
                           <%end%>
                           <br />
                           <%unless listing.owner.nil?%>
@@ -156,7 +156,7 @@
                           <%end%>
                           <br />
                           <%if listing.video_uplink.present?%>
-                              <span>Video Link - <%=h listing.video_uplink %></span>
+                              <span><%=h link_to listing.video_uplink, listing.video_uplink, :target => "_blank" %></span>
                           <%end%> 
                           <br />                         
                           <%unless listing.owner.nil?%>

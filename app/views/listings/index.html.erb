@@ -57,6 +57,18 @@
                       <% if listing.owner.city && listing.owner.state %>
                           <span><%=h listing.owner.city %>, <%=h listing.owner.state %></span> <img src="/assets/bubble.png" width="13" height="15" />
                       <%end%>
+                      
+                      <table>
+                        <tr>
+                          <td><%if listing.video_uplink.present?%>
+                              <span style="float:right;"><%=h link_to listing.video_uplink, listing.video_uplink, :target => "_blank" %>
+                              </span>
+                      <%end%>
+                      </td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </table>
                       <p class="description"><%=h listing.desc %></p>
                       <table>
                         <tr>
