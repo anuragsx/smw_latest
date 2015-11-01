@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804172236) do
+ActiveRecord::Schema.define(version: 20151017111634) do
 
   create_table "autocategories", force: true do |t|
     t.string   "category"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(version: 20150804172236) do
     t.datetime "updated_at"
   end
 
+  create_table "listing_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "listings", force: true do |t|
     t.integer  "year"
     t.string   "make"
@@ -76,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150804172236) do
     t.datetime "expired_at"
     t.string   "video_uplink"
     t.integer  "category_id"
+    t.integer  "listing_category_id"
   end
 
   create_table "marinecategories", force: true do |t|

@@ -6,14 +6,14 @@ class Listing < ActiveRecord::Base
 
   attr_accessible :listingtype, :expired_at, :year, :mileage, :make, :vin, :model, :price, :body, :desc, :exterior_color,
                   :interior_color, :doors, :engine, :transmission, :drive, :fuel, :category, :subcategory, :length, :hull,
-                  :category_id, :video_uplink
+                  :listing_category_id, :video_uplink
 
   STATES = ['AK','AL','AR','AZ','CA','CO','CT','DE','FL','GA','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI',
             'MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA',
             'VT','WA','WI','WV','WY']
 
 	validates :listingtype, :presence => true
-  validates :category_id, :presence => true
+  validates :listing_category_id, :presence => true
 
 	validates :price, :mileage, :numericality =>
                     { :only_integer => true,
@@ -25,7 +25,8 @@ class Listing < ActiveRecord::Base
 	has_many :messages
 	has_many :photos, :dependent => :destroy
 	has_many :wishlists, :foreign_key => "user_id", :primary_key => "user_id"
-  belongs_to :category
+  #belongs_to :category
+  belongs_to :listing_category
 
   validate :can_not_include_url
 #will_paginate stuff
@@ -110,8 +111,8 @@ class Listing < ActiveRecord::Base
   end
 
   def can_not_include_url
-    if self.category.present?
-    if self.category.id != 3
+    if self.listing_category.present?
+    if self.listing_category.id != 3
       if self.desc.include?("http") || self.desc.include?("https") || self.desc.include?("www")
         self.errors.add(:desc, "Can not have any video link.")
       end

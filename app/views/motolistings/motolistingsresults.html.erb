@@ -108,6 +108,13 @@
                             <h2><%=h listing.year %> <%=h listing.make %></h2>
 
                             <span class="mileage">Mileage : <%=h listing.mileage %></span> </div>
+                          <%unless listing.body.blank?%>
+                              <span>ss - <%=h listing.body %></span>
+                          <%end%>
+                          <%if listing.video_uplink.present?%>
+                             <span><%=h link_to listing.video_uplink, listing.video_uplink, :target => "_blank" %></span>
+                          <%end%>
+                          <br />  
                           <%unless listing.category.blank?%>
                               <span>Category - <%=h listing.category %></span>
                           <%end%>
@@ -153,6 +160,13 @@
                       <div class="inline">
                         <h2><%=h listing.year %> <%=h listing.make %></h2>
                         <span class="mileage">Milage : <%=h listing.mileage %></span> </div>
+                          <%unless listing.body.blank?%>
+                              <span>ss - <%=h listing.body %></span>
+                          <%end%>
+                          <%if listing.video_uplink.present?%>
+                             <span><%=h link_to listing.video_uplink, listing.video_uplink, :target => "_blank" %></span>
+                          <%end%>
+                          <br />  
                       <%unless listing.category.blank?%>
                           <span>Category - <%=h listing.category %></span>
                       <%end%>

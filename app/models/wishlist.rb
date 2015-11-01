@@ -7,9 +7,6 @@ class Wishlist < ActiveRecord::Base
 	validates_presence_of :listingtype
 
   def self.perfect_swap(params)
-    puts "---------------------------"
-    puts params.inspect
-    exit
     query = Whishlist.where("listingtype = ?", "#{params['listing_type']}") unless params[:listingtype].blank?
     query = query.where("make = ?", "#{params['make']}") unless params[:make].blank?
     unless params[:make].blank?

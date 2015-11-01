@@ -31,8 +31,8 @@
                           <%= f.hidden_field :expired_at, :value => Date.today + 365 %>
                           <tr>
                             <td>
-                              <%= f.label "Category:" %><br />
-                              <%= f.select(:category_id, Category.all.map{|c| [c.name, c.id]}, {:prompt => "-Select Category-"}) %>
+                              <%= f.label "Listing Category:" %><br />
+                              <%= f.select(:listing_category_id, ListingCategory.all.map{|c| [c.name, c.id]}, {:prompt => "-Select Category-"}) %>
                             </td>
                             <td id="uplink">
                               <%= f.label "Video Uplink:" %><br />
@@ -180,7 +180,7 @@
             }
         });
         $('#uplink').hide();
-        $( "#listing_category_id" ).change(function() {
+        $( "#listing_listing_category_id" ).change(function() {
             if ($(this).val() == '3')
             {
                 $('#uplink').show();

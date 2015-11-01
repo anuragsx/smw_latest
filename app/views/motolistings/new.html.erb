@@ -31,6 +31,18 @@
                           <%= f.hidden_field :expired_at, :value => Date.today + 365 %>
                           <tr>
                             <td>
+                              <%= f.label "Listing Category:" %><br />
+                              <%= f.select(:listing_category_id, ListingCategory.all.map{|c| [c.name, c.id]}, {:prompt => "-Select Category-"}) %>
+                            </td>
+                          </tr>
+                          <tr id="uplink">  
+                            <td>
+                              <%= f.label "Video Uplink:" %><br />
+                              <%= f.text_field :video_uplink, :size => 15 %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
                               <%= f.label "Year:" %><br />
                               <%= f.text_field :year, :size => 15 %>
                             </td>
@@ -122,6 +134,17 @@
                         }
                     }
                 });
+            }
+        });
+
+        $('#uplink').hide();
+        $( "#listing_listing_category_id" ).change(function() {
+            if ($(this).val() == '3')
+            {
+                $('#uplink').show();
+            }
+            else {
+                $('#uplink').hide();
             }
         });
     });
